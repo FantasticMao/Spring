@@ -1,12 +1,10 @@
 package com.maomao.spring.domain;
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Repository
 @Component
 public class Manager {
     private Integer id;

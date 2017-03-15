@@ -49,7 +49,7 @@ Scope 描述的是 Spring 容器如何创建 Bean 实例。Spring 的 Scope 有�
 Spring 支持对 Bean 的生命周期进行操作，可使用 XML 配置或 Java 配置或注解配置：
 1. XML 配置 <Bean> 标签中的 init-method 和 destroy-method
 2. Java 配置 `@Bean` 注解中的 `initMethod` 和 `destroyMethod`
-3. JSR-250 中的 `@PostConstruct` 和 `PreDestroy`
+3. JSR-250 中的 `@PostConstruct` 和 `@PreDestroy`
 
 ---
 
@@ -60,3 +60,12 @@ Spring EL 支持在 XML 和注解中使用表达式，类似 JSP 的 EL 表达�
 Spring 主要在 `@Value` 注解的参数中使用表达式
 
 ---
+
+**Spring Profiles**
+
+Profile 为在不同环境下使用不同的配置提供了支持，如数据库连接。在代码中使用 `@Profile` 指定不同环境下的配置。
+
+设定环境可以通过以下三种方法：
+1. 通过 Environment 的 ActiveProfiles 来设定当前 context 所需要的配置环境
+2. 通过配置 JVM 的 spring.profiles.active 启动参数设定
+3. Web 项目中通过配置 Servlet 的 context parameter 参数设定
