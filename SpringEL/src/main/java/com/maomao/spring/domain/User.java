@@ -3,6 +3,9 @@ package com.maomao.spring.domain;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * 使用 Value 注解可使用 Spring EL 表达式
+ */
 @Component
 public class User {
     @Value("${user.name}")

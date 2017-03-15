@@ -6,7 +6,7 @@ Spring models 概览
 
 Spring Framework 第一次发布是在 2004 年。Spring 2.0 支持 XML 命名空间和 AspectJ；Spring 2.5 支持注解驱动；Spring 3.0 提供了基于 Java 5+ 更强大的API，如 `@Configuration` 注解；Spring 4.0 支持 Java 8 语法。
 
-`BeanFactory` 接口提供了管理 Bean 的高级配置。`ApplicationContext` 是 `BeanFactory` 的子接口，集成了 Spring AOP、消息资源处理、事件发布、应用层特定上下文如 `WebApplicationContext`。简单地说，`BeanFactory` 提供了框架级配置和基础功能，`ApplicationContext` 则添加了更多的企业开发级功能。
+`BeanFactory` 接口提供了管理 Bean 的高级配置。`ApplicationContext` 是 `BeanFactory` 的子接口，集成了 Spring AOP、消息资源处理、Spring Event、应用层特定上下文如 `WebApplicationContext`。简单地说，`BeanFactory` 提供了框架级配置和基础功能，`ApplicationContext` 则添加了更多的企业开发级功能。
 
 ![images](images/ApplicationContext.png)
 

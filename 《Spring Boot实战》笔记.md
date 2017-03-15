@@ -26,7 +26,7 @@ Java 类配置是 Spring 4.x 推荐使用的方式。
 **切面编程 AOP**
 
 Spring 支持 AspectJ 的注解式切面编程：
-1. 使用 `@AspectJ` 声明当前类是一个切面
+1. 使用 `@Aspect` 声明当前类是一个切面
 2. 使用 `@After`、`@Before`、`@Around` 定义 Advice (建议)
 3. `@After`、`@Before`、`@Around` 参数的拦截规则为 PointCut (切点)
 4. 符合条件的每一个 PointCut 为 JoinPoint (连接点)
@@ -48,7 +48,7 @@ Scope 描述的是 Spring 容器如何创建 Bean 实例。Spring 的 Scope 有�
 
 Spring 支持对 Bean 的生命周期进行操作，可使用 XML 配置或 Java 配置或注解配置：
 1. XML 配置 <Bean> 标签中的 init-method 和 destroy-method
-2. Java 配置 `@Bean` 注解中的 `initMethod` 和 `destroyMethod`
+2. Java 配置 `@Bean` 注解中的 initMethod 和 destroyMethod
 3. JSR-250 中的 `@PostConstruct` 和 `@PreDestroy`
 
 ---
@@ -69,3 +69,19 @@ Profile 为在不同环境下使用不同的配置提供了支持，如数据库
 1. 通过 Environment 的 ActiveProfiles 来设定当前 context 所需要的配置环境
 2. 通过配置 JVM 的 spring.profiles.active 启动参数设定
 3. Web 项目中通过配置 Servlet 的 context parameter 参数设定
+
+---
+
+**Application Event**
+Spring 的事件 (Application Event)为 Bean 和 Bean 之间的消息通信提供了支持。当一个 Bean 处理完一个任务之后，希望另一个 Bean 知道并能做相应的处理，这时我们就需要让另一个 Bean 监听当前 Bean 所发送的事件。
+
+Spring 的事件需要遵循如下流程：
+1. 自定义事件，继承 `ApplicationEvent`
+2. 自定义事件监听器，实现 `ApplicationListener`
+3. 使用容器发布事件
+
+--- 
+
+**Spring Aware**
+
+Spring Aware 的目的是为了让 Bean 获取 Spring 容器的服务。所谓的 Spring Aware，是意味着容器中的 Bean 可以有意识地与 Spring 容器进行交互，从而调用 Spring 框架所提供的资源。Spring Aware 是为 Spring 框架内部使用的，若使用了 Spring Aware 则意味着当前 Bean 已经与 Spring 框架耦合。

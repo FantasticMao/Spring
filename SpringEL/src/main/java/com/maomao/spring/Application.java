@@ -3,6 +3,9 @@ package com.maomao.spring;
 import com.maomao.spring.domain.Site;
 import org.springframework.context.annotation.*;
 
+/**
+ * 使用 Profile 注解可指定不同环境下的 Spring 配置
+ */
 @Configuration
 @ComponentScan
 @PropertySource("classpath:user.properties")
