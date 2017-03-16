@@ -1,4 +1,4 @@
-《Spring Boot实战》笔记
+《Spring Boot 实战》笔记
 ---
 
 **依赖注入 IoC**
@@ -18,6 +18,7 @@
 1. `@Configuration` 声明当前类是一个配置类
 2. `@ComponentScan` 自动扫描包名下所有使用 `@Component`、`@Repository`、`@Service`、`@Controller` 的类
 3. `@Bean` 声明当前方法的返回值为一个 Bean
+4. `@Import` 导入一个配置类
 
 Java 类配置是 Spring 4.x 推荐使用的方式。
 
@@ -73,6 +74,7 @@ Profile 为在不同环境下使用不同的配置提供了支持，如数据库
 ---
 
 **Application Event**
+
 Spring 的事件 (Application Event)为 Bean 和 Bean 之间的消息通信提供了支持。当一个 Bean 处理完一个任务之后，希望另一个 Bean 知道并能做相应的处理，这时我们就需要让另一个 Bean 监听当前 Bean 所发送的事件。
 
 Spring 的事件需要遵循如下流程：
@@ -85,3 +87,19 @@ Spring 的事件需要遵循如下流程：
 **Spring Aware**
 
 Spring Aware 的目的是为了让 Bean 获取 Spring 容器的服务。所谓的 Spring Aware，是意味着容器中的 Bean 可以有意识地与 Spring 容器进行交互，从而调用 Spring 框架所提供的资源。Spring Aware 是为 Spring 框架内部使用的，若使用了 Spring Aware 则意味着当前 Bean 已经与 Spring 框架耦合。
+
+---
+
+**TaskExecuter**
+
+Spring 通过任务执行器 (TaskExecuter) 来实现多线程和并发编程。`ThreadPoolTaskExecuter` 是一个基于线程池的 `TaskExecuter`。配置类中使用 `@EnableAsync` 注解开启对异步任务的支持，在 Bean 方法中使用 `@Async` 注解声明其是一个异步任务。
+
+---
+
+**Scheduled**
+
+在 Spring 中实现计划任务很简单。通过在配置类中使用 `@EnableScheduling` 开启对计划任务的支持，然后在需要计划执行的方法上注解 `@Scheduled`。Spring 的 Scheduled 支持多种类型的计划任务，包含 cron、fixDelay、fixRate 等。
+
+---
+
+

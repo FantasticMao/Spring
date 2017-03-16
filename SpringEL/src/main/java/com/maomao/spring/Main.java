@@ -1,19 +1,20 @@
 package com.maomao.spring;
 
-import com.maomao.spring.domain.Site;
-import com.maomao.spring.domain.User;
+import com.maomao.spring.el.User;
+import com.maomao.spring.profiles.Site;
+import com.maomao.spring.task.MyTask;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
 
-    static void run1() {
+    static void el() {
         ApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
         User user = context.getBean("user", User.class);
         System.out.println(user);
     }
 
-    static void run2() {
+    static void profiles1() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.getEnvironment().setActiveProfiles("pro");
         context.register(Application.class);
@@ -22,7 +23,7 @@ public class Main {
         System.out.println(site);
     }
 
-    static void run3() {
+    static void profiles2() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.getEnvironment().setActiveProfiles("dev");
         context.register(Application.class);
@@ -31,7 +32,21 @@ public class Main {
         System.out.println(site);
     }
 
+
+    static void task() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
+        MyTask task = context.getBean("myTask", MyTask.class);
+        for (int i = 0; i < 10; i++) {
+            task.task1(i);
+            task.task2(i);
+        }
+    }
+
+    static void scheduledTask() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
+    }
+
     public static void main(String[] args) {
-        run3();
+        el();
     }
 }

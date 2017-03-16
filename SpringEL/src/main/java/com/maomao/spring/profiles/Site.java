@@ -1,4 +1,4 @@
-package com.maomao.spring.domain;
+package com.maomao.spring.profiles;
 
 import org.springframework.stereotype.Component;
 
