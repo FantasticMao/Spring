@@ -62,7 +62,7 @@ Spring 主要在 `@Value` 注解的参数中使用表达式
 
 ---
 
-**Spring Profiles**
+**Profile**
 
 Profile 为在不同环境下使用不同的配置提供了支持，如数据库连接。在代码中使用 `@Profile` 指定不同环境下的配置。
 
@@ -102,4 +102,15 @@ Spring 通过任务执行器 (TaskExecuter) 来实现多线程和并发编程。
 
 ---
 
+**Conditional**
 
+`@Conditional` 注解能根据特定条件创建特定的 Bean，Spring Boot 中大量应用到条件注解。判断条件类继承 `Condition` 类并重写 matches 方法，作为参数传递给 `@Conditional` 即可。
+
+---
+
+**@Enable*注解工作原理**
+
+如 `@EnableAspectJAutoProxy`、`@EnableAsync`、`@EnableScheduling`、`@EnableWebMvc`、`@EnableConfigurationProperties`、`@EnableJpaRepositories` 等等的 @Enable\* 注解，其实现原理主要分为以下三类：
+1. 直接导入配置类，如 `@EnableScheduling`
+2. 依据条件选择配置类，如 `@EnableAsync`
+3. 动态注册 Bean，如 `@EnableAspectJAutoProxy`

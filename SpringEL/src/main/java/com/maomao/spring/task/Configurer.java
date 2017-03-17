@@ -1,4 +1,4 @@
-package com.maomao.spring;
+package com.maomao.spring.task;
 
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
@@ -8,7 +8,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import java.util.concurrent.Executor;
 
 @EnableAsync
-public class TaskConfigurer implements AsyncConfigurer {
+public class Configurer implements AsyncConfigurer {
 
     @Override
     public Executor getAsyncExecutor() {

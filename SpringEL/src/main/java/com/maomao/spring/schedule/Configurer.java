@@ -1,7 +1,7 @@
-package com.maomao.spring;
+package com.maomao.spring.schedule;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
-public class ScheduledTaskConfigurer {
+public class Configurer {
 }

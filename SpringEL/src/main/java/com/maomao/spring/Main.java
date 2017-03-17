@@ -1,5 +1,6 @@
 package com.maomao.spring;
 
+import com.maomao.spring.condition.OsService;
 import com.maomao.spring.el.User;
 import com.maomao.spring.profiles.Site;
 import com.maomao.spring.task.MyTask;
@@ -46,7 +47,13 @@ public class Main {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
     }
 
+    static void condition() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
+        OsService service = context.getBean(OsService.class);
+        service.service();
+    }
+
     public static void main(String[] args) {
-        el();
+        condition();
     }
 }

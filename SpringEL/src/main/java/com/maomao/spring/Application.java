@@ -9,7 +9,10 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @ComponentScan
-@Import({ProfilesConfigurer.class, TaskConfigurer.class, ScheduledTaskConfigurer.class})
+@Import({com.maomao.spring.profiles.Configurer.class,
+        com.maomao.spring.task.Configurer.class,
+        com.maomao.spring.schedule.Configurer.class,
+        com.maomao.spring.condition.Configurer.class})
 public class Application {
 
 }

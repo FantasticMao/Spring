@@ -1,12 +1,12 @@
-package com.maomao.spring;
+package com.maomao.spring.profiles;
 
-import com.maomao.spring.profiles.Site;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 
 @PropertySource("classpath:user.properties")
-public class ProfilesConfigurer {
+public class Configurer {
+
     @Bean
     @Profile("pro")
     public Site proSite() {
