@@ -129,16 +129,16 @@ Spring 通过任务执行器 (TaskExecuter) 来实现多线程和并发编程。
 5. `@ResponseBody` 注解允许将返回值放置在 Response 体中
 6. `@PathVariable` 注解用于接受 URL 路径参数
 
+*ControllerAdvice* ：使用 `@ControllerAdvice` 注解可以集中处理 `@Controller` 的全局配置，并对所有的 `@RequestMapping` 方法生效，如 `@ExceptionHandler`、`@InitBinder`、`@ModelAttribute`。
+1. `@ExceptionHandler` 用于全局处理控制器里的异常
+2. `@InitBinder` 用于这是 `WebDataBinder`，可自动绑定请求参数至 Model 中
+3. `@ModelAttribute` 用于绑定键值对到 Model 中
+
 *ViewResolver* ：`ViewResolver` 是 Spring MVC 视图渲染核心机制，其 resolveViewName 方法返回的 `View` 类职责就是使用 model、request、response 对象，并将渲染的视图返回给浏览器。
 
 *自定义配置* ：Spring MVC 的定制需要配置类继承 `WebMvcConfigurerAdapter`，重写其方法，并在配置类上使用 `@EnableWebMvc` 注解。
 
 *拦截器* ：可实现 `HandlerInterceptor` 接口或继承 `HandlerInterceptorAdapter` 类来实现 Spring MVC 的拦截器，并在重写 `WebMvcConfigurerAdapter` 的 addInterceptors 方法中注册自定义的拦截器。
-
-*@ControllerAdvice* ：使用 `@ControllerAdvice` 注解可以集中处理 `@Controller` 的全局配置，并对所有的 `@RequestMapping` 方法生效，如 `@ExceptionHandler`、`@InitBinder`、`@ModelAttribute`。
-1. `@ExceptionHandler` 用于全局处理控制器里的异常
-2. `@InitBinder` 用于这是 `WebDataBinder`，可自动绑定请求参数至 Model 中
-3. `@ModelAttribute` 用于绑定键值对到 Model 中
 
 *文件上传* ：Spring MVC 通过 `MultipartResolver` 类来支持文件上传。在控制器中，通过 `MultipartFile file` 参数来接受一个文件，通过 `MultipartFile[] files` 来接受多个文件。使用文件上传功能，须导入 `commons-fileupload` 包。
 
