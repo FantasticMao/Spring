@@ -1,35 +1,57 @@
 package com.maomao.spring;
 
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
-
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
  * Servlet 3.0+ 版本提倡的无 Web.xml 配置中。
  * 在 Spring MVC 中实现 WebApplicationInitializer 接口即可。
  */
-public class WebAppInitializer implements WebApplicationInitializer {
+public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
+    /**
+     * {@link org.springframework.web.context.ContextLoaderListener} 加载应用中的其它 bean，如后端中间层和数据库组件。
+     */
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class[]{AppConfig.class};
+    }
+
+    /**
+     * {@link org.springframework.web.servlet.DispatcherServlet} 加载包含 Web 组件的 bean，如控制器、视图解析器、处理器映射
+     */
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class[]{WebConfig.class};
+    }
+
+    /**
+     * 将一个或多个路径映射到 DispatcherServlet
+     */
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/"};
+    }
+
+
+    /*
+    // 实现 {@link org.springframework.web.WebApplicationInitializer} 方式
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
-        // 创建 WebApplicationContext
+        //创建 WebApplicationContext
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        // 注册配置类
-        context.register(WebApp.class);
-        // 关联当前的 ServletContext
+        //注册配置类
+        context.register(WebConfig.class);
+        //关联当前的 ServletContext
         context.setServletContext(servletContext);
 
-        // 注册 DispatcherServlet
+        //注册 DispatcherServlet
         ServletRegistration.Dynamic dispatcher =
                 servletContext.addServlet("dispatcher", new DispatcherServlet(context));
         dispatcher.addMapping("/");
         dispatcher.setLoadOnStartup(1);
 
-        // 默认首页
+        //默认首页
         servletContext.setAttribute("welcome-file-list", "/index.html");
     }
+    */
 }
