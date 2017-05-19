@@ -5,10 +5,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
-import org.springframework.validation.Validator;
-import org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,12 +26,19 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("/views/");
         viewResolver.setSuffix(".jsp");
+        // 解析 JSTL 视图
+        viewResolver.setViewClass(JstlView.class);
         return viewResolver;
     }
 
     @Bean
     public MyInterceptor myInterceptor() {
         return new MyInterceptor();
+    }
+
+    @Bean
+    public MultipartResolver multipartResolver() {
+        return new StandardServletMultipartResolver();
     }
 
     @Override
@@ -54,10 +62,5 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(myInterceptor());
-    }
-
-    @Override
-    public Validator getValidator() {
-        return new OptionalValidatorFactoryBean();
     }
 }

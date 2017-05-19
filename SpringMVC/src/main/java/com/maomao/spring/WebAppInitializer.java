@@ -2,6 +2,9 @@ package com.maomao.spring;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration;
+
 /**
  * Servlet 3.0+ 版本提倡的无 Web.xml 配置中。
  * 在 Spring MVC 中实现 WebApplicationInitializer 接口即可。
@@ -32,6 +35,12 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
         return new String[]{"/"};
     }
 
+    @Override
+    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+        MultipartConfigElement multipartConfigElement =
+                new MultipartConfigElement("/tmp/spring/uploads", 2 * 1024 * 1024, -1L, 0);
+        registration.setMultipartConfig(multipartConfigElement);
+    }
 
     /*
     // 实现 {@link org.springframework.web.WebApplicationInitializer} 方式
