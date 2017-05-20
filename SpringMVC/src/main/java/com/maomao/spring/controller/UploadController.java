@@ -23,7 +23,7 @@ public class UploadController {
         if (dest.isFile() && !dest.exists()) {
             dest.createNewFile();
         }
-        file.transferTo(dest);
+        file.transferTo(dest); // 保存至指定文件
         return "{\"success\"}";
     }
 }
