@@ -21,8 +21,8 @@ public class ValidateController {
     public String validate(@Valid User user, Errors errors) {
         System.out.println(user);
         if (errors.hasErrors()) {
-            return "{\"error\"}";
+            return "error";
         }
-        return "{\"success\"}";
+        return "success";
     }
 }

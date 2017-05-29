@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 1. @Controller 注解声明当前类是 Spring MVC 的控制器
  * 2. @RestController 注解组合了 @Controller 和 @ResponseBody
@@ -17,9 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class HelloController {
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public String hello() {
-        return "{\"status\":true,\"message\":\"hello\"}";
+    @RequestMapping(value = "/hello", method = RequestMethod.GET,
+            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, // 对应 request 中的 Content-Type
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE) // 对应 request 中的 Accept
+    public Map hello() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("status", true);
+        map.put("message", "hello");
+        return map;
     }
 
 }
