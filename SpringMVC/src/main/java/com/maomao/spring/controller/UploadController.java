@@ -1,8 +1,7 @@
 package com.maomao.spring.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,7 +12,7 @@ import java.io.IOException;
 @Controller
 public class UploadController {
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @PostMapping("/upload")
     @ResponseBody
     public String upload(@RequestPart MultipartFile file) throws IOException {
         System.out.println("Name: " + file.getName());
@@ -24,6 +23,6 @@ public class UploadController {
             dest.createNewFile();
         }
         file.transferTo(dest); // 保存至指定文件
-        return "{\"success\"}";
+        return "{\"message\":\"success\"}";
     }
 }

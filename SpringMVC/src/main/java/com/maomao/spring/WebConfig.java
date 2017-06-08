@@ -27,7 +27,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         viewResolver.setPrefix("/views/");
         viewResolver.setSuffix(".jsp");
         // 解析 JSTL 视图
-        viewResolver.setViewClass(JstlView.class);
+        // viewResolver.setViewClass(JstlView.class);
         return viewResolver;
     }
 

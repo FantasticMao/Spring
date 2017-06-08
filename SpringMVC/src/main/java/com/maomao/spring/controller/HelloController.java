@@ -1,9 +1,10 @@
 package com.maomao.spring.controller;
 
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,13 +17,14 @@ import java.util.Map;
  * 5. @ResponseBody 注解允许将返回值放置在 Response 体中
  * 6. @PathVariable 注解用于接受 URL 路径参数
  */
-@RestController
+@Controller
 @RequestMapping("/api")
 public class HelloController {
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET,
+    @GetMapping(value = "/hello",
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, // 对应 request 中的 Content-Type
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE) // 对应 request 中的 Accept
+    @ResponseBody
     public Map hello() {
         Map<String, Object> map = new HashMap<>();
         map.put("status", true);
