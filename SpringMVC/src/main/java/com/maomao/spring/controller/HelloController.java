@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,10 +26,11 @@ public class HelloController {
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, // 对应 request 中的 Content-Type
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE) // 对应 request 中的 Accept
     @ResponseBody
-    public Map hello() {
+    public Map hello(HttpServletRequest request) {
         Map<String, Object> map = new HashMap<>();
         map.put("status", true);
         map.put("message", "hello");
+        request.getSession().setAttribute("name", "maomao");
         return map;
     }
 
