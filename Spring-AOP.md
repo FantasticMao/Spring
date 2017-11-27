@@ -1,5 +1,4 @@
 Spring AOP
-
 ---
 
 # AOP concepts

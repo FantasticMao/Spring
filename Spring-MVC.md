@@ -1,5 +1,4 @@
 Spring MVC
-
 ---
 
 # Web MVC framework
