@@ -1,5 +1,7 @@
 Spring MVC
+
 ---
+
 # Web MVC framework
 Spring MVC 与其它 MVC 框架一样，以请求为驱动，围绕一个核心 Servlet 设计，将请求发送给控制器，并提供一些促进 Web 应用开发的功能。Spring MVC 的 `DispatcherServlet` 的请求处理工作流程如下图所示：
 
